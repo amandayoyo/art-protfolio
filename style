@@ -11,6 +11,20 @@
 
 *{ box-sizing: border-box; }
 html,body{ margin:0; padding:0; }
+
+/* ===== 全站兜底：任何图片都不会超出容器/屏幕 ===== */
+img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 如果某些图片“高到只显示一部分”，用这个强制压住高度（保留完整画面） */
+img{
+  max-height: 70vh;     /* 最高不超过屏幕高度的70% */
+  object-fit: contain;  /* 不裁切，完整显示 */
+}
+
 body{
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
   color: var(--text);
@@ -21,7 +35,6 @@ body{
     var(--bg);
   overflow-x: hidden;
 }
-
 
 .wrap{
   width: min(1050px, 92vw);
@@ -67,7 +80,6 @@ body{
   font-size: 14px;
 }
 
-
 .chips{ display:flex; flex-wrap:wrap; gap:8px; }
 .chip{
   font-size: 12px;
@@ -76,7 +88,6 @@ body{
   background: linear-gradient(135deg, rgba(255,134,180,.22), rgba(185,166,255,.18));
   border: 1px solid rgba(255,134,180,.25);
 }
-
 
 .nav{
   display:flex;
@@ -133,7 +144,6 @@ body{
   .grid{ grid-template-columns: 1fr; }
 }
 
-
 .card{
   background: rgba(255,255,255,.78);
   border: 1px solid rgba(255,255,255,.86);
@@ -147,15 +157,20 @@ body{
   box-shadow: 0 20px 55px rgba(30,30,60,.14);
 }
 
+/* ===== 作品卡片里的图片：统一尺寸 ===== */
 .card img{
   width: 100%;
   height: 220px;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
+
+  /* 防止继承到全站 img 的 max-height 造成奇怪效果 */
+  max-height: none;
 }
 
 .card.tall img{
   height: 320px;
+  max-height: none;
 }
 
 .meta{
@@ -222,44 +237,25 @@ body{
 }
 .s1{ top: 40px; left: 22px; color: var(--pink); transform: rotate(-8deg); }
 .s2{ top: 120px; right: 20px; color: var(--lav); transform: rotate(10deg); }
+.s3{ bottom: 40px; left: 18px; color: var(--mint); transform: rotate(-12deg); }
 
-.s3{ bottom: 40px; left: 18px; color: var(--mint); transform: rotate(-12deg); } 
-
-/* ===== 全局重置 ===== */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #fffafc;
-}
-
-/* ===== 所有图片自动缩放（防止巨大图片） ===== */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ===== 作品展示区域 ===== */
-.gallery {
+/* ===== 可选：如果你真的有用 gallery（没用也不会影响） ===== */
+.gallery{
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
   padding: 40px 20px;
 }
-
-/* ===== 单张作品样式 ===== */
-.gallery img {
-  width: 280px;        /* 控制作品大小 */
+.gallery img{
+  width: 280px;
   height: auto;
-  border-radius: 12px; /* 圆角 */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* 柔和阴影 */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   cursor: pointer;
+  max-height: none;
 }
-
-/* ===== 鼠标悬停放大效果 ===== */
-.gallery img:hover {
+.gallery img:hover{
   transform: scale(1.05);
 }
