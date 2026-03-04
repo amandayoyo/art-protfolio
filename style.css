@@ -199,4 +199,88 @@ body{
 
 .s1{ top: 40px; left: 22px; color: var(--pink); }
 .s2{ top: 120px; right: 20px; color: var(--lav); }
+
 .s3{ bottom: 40px; left: 18px; color: var(--mint); }
+
+/* ===== Upgrade: nicer hover ===== */
+.card img{
+  transition: transform .25s ease;
+}
+
+.card:hover img{
+  transform: scale(1.03);
+}
+
+.meta{
+  transition: transform .25s ease;
+}
+
+.card:hover .meta{
+  transform: translateY(-2px);
+}
+
+/* ===== Upgrade: click-to-zoom (Lightbox) ===== */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  display: none;                 /* 默认隐藏 */
+  place-items: center;
+  background: rgba(20, 18, 26, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  padding: 22px;
+}
+
+.lightbox.is-open{
+  display: grid;
+}
+
+.lightbox-inner{
+  width: min(1100px, 92vw);
+  max-height: 88vh;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,.35);
+  background: rgba(255,255,255,.10);
+}
+
+.lightbox-img{
+  width: 100%;
+  height: 88vh;
+  max-height: 88vh;
+  object-fit: contain;
+  display: block;
+  background: rgba(0,0,0,.12);
+}
+
+.lightbox-close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(0,0,0,.35);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.lightbox-tip{
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: rgba(255,255,255,.85);
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.18);
+}
+
+/* 让可点击更明显 */
+.card img{
+  cursor: zoom-in;
+}
