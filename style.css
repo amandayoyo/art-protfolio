@@ -12,7 +12,6 @@
 *{ box-sizing: border-box; }
 html,body{ margin:0; padding:0; }
 
-/* ===== 全局图片兜底（不会爆炸变大）===== */
 img{
   max-width: 100%;
   height: auto;
@@ -52,9 +51,8 @@ body{
   box-shadow: var(--shadow);
 }
 
-/* 👇 头像缩小 */
 .avatar{
-  width: 60px;          /* 变小 */
+  width: 60px;
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
@@ -62,7 +60,6 @@ body{
   flex-shrink: 0;
 }
 
-/* 简介区域 */
 .intro h1{
   margin: 0;
   font-size: 20px;
@@ -149,11 +146,11 @@ body{
   box-shadow: 0 20px 55px rgba(30,30,60,.15);
 }
 
-/* ⭐ 核心：统一作品大小 */
+
 .card img{
   width: 100%;
-  height: 220px;         /* 想更大改 260px */
-  object-fit: cover;     /* 想完整显示改 contain */
+  height: 220px;        
+  object-fit: cover;   
   max-height: none;
 }
 
@@ -223,7 +220,7 @@ body{
 .lightbox{
   position: fixed;
   inset: 0;
-  display: none;                 /* 默认隐藏 */
+  display: none;                 
   place-items: center;
   background: rgba(20, 18, 26, 0.75);
   backdrop-filter: blur(6px);
@@ -280,7 +277,7 @@ body{
   border: 1px solid rgba(255,255,255,.18);
 }
 
-/* 让可点击更明显 */
 .card img{
   cursor: zoom-in;
 }
+
