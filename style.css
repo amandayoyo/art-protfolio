@@ -40,7 +40,6 @@ body{
   padding: 30px 0 10px;
 }
 
-/* 小头像 + 简介布局 */
 .profile{
   display:flex;
   align-items:center;
@@ -280,4 +279,5 @@ body{
 .card img{
   cursor: zoom-in;
 }
+
 
